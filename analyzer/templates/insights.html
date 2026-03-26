@@ -1,5 +1,62 @@
 {% extends 'base.html'%}
 
 {% block content %}
-    <h1>hi</h1>
+<div class="container mt-5">
+    <h2 class="mb-4">Job Market Insights</h2>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Top 10 In-Demand Skills</h5>
+                {% for skill, count in top_skills.items %}
+                <div class="d-flex justify-content-between">
+                    <span>{{ skill }}</span>
+                    <strong>{{ count }}</strong>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="col-md-6 mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Top Hiring Companies</h5>
+                {% for company, count in top_companies.items %}
+                <div class="d-flex justify-content-between">
+                    <span>{{ company }}</span>
+                    <strong>{{ count }} jobs</strong>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6 mb-4">
+            <div class="card-body">
+                <h5 class="card-title">TAverage Salary Offered</h5>
+                {% for title, salary in avg_salary.items %}
+                <div class="d-flex justify-content-between">
+                    <span>{{ title }}</span>
+                    <strong>{{ salary }}</strong>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="col-md-6 mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Jobs by Location</h5>
+                {% for location, count in top_skills.items %}
+                <div class="d-flex justify-content-between">
+                    <span>{{ location }}</span>
+                    <strong>{{ count }} jobs</strong>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock %}
