@@ -3,25 +3,32 @@
 {% block content %}
 
 <div class="container mt-5">
+    <h2>Job Recommendations</h2>
+    <p>Results for: <strong>{{ skills }}</strong></p>
 
-<h2>Dataset Summary</h2>
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ job.job_title }}</h5>
+                    <h6 class="card-title">{{job.company}}</h6>
+                    <p class="card-text">
+                        <p><strong>Skills Required:</strong> 
+                            <ul>
+                                <li>{{ job.skills }}</li>
+                            </ul>
+                        </p>
+                        <p><strong>Salary:</strong> ${{ job.salary_min }} - ${{ job.salary_max }}</p>
+                        <p><strong>Match Score:</strong> {{ job.match_score }} skills matched</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
-<p><strong>Rows:</strong> {{ rows }}</p>
-<p><strong>Columns:</strong> {{ cols }}</p>
-
-<h4>Column Names</h4>
-<ul>
-{% for col in columns %}
-<li>{{ col }}</li>
-{% endfor %}
-</ul>
-
-<h4>Dataset Preview</h4>
-
-<div class="table-responsive">
-{{ preview|safe }}
-</div>
-
+    <a href="{% url 'recommend' %}" class="btn btn-primary">Search Again</a>
 </div>
 
 {% endblock %}

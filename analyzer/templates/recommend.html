@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Find Your Dream Job</h2>
+    <p>Enter your skills below to get job recommendations</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Your Skills</label>
+            <input type="text" name="skills" class="form-control" 
+            placeholder="e.g. Python, SQL, Machine Learning">
+        </div>
+        <button type="submit" class="btn btn-primary">Get Recommendations</button>
+    </form>
+</div>
+{% endblock %}

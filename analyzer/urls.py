@@ -6,8 +6,7 @@ from . import views
 # /products/new
 
 urlpatterns = [
-    path('', views.Home_Page),
-    path('upload', views.Upload),
-    path('result', views.Result),
-    path('insights', views.Insights)
+    path('', views.Home_Page, name= "homepage"),
+    path('recommend', views.Recommend, name = "recommend"),
+    path('insights', views.Insights, name= "insights")
 ]

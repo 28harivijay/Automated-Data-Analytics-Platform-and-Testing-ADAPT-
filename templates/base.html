@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-CfCrinSRH2IR6a4e6fy2q6ioOX7O6Mtm1L9vRvFZ1trBncWmMePhzvafv7oIcWiW" crossorigin="anonymous">
 
-    <title>Products</title>
+    <title>InJob</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">ADAPT</a>
+            <a class="navbar-brand" href="#">InJob</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -24,16 +24,13 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Upload</a>
+                        <a class="nav-link" href="{% url 'recommend' %}">Recommend</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Result</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Insights</a>
+                        <a class="nav-link" href="{% url 'insights' %}">Insights</a>
                     </li>
                 </ul>
                 <!--<span class="navbar-text">
