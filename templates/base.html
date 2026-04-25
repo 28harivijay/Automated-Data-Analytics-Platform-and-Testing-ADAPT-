@@ -5,63 +5,135 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InJobNet | Analytics</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
-        integrity="sha384-CfCrinSRH2IR6a4e6fy2q6ioOX7O6Mtm1L9vRvFZ1trBncWmMePhzvafv7oIcWiW" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <title>InJobNet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --ink: #0a0a0a;
+            --slate: #666666;
+            --ghost-white: #fcfcfc;
+            --action-blue: #007aff; /* Apple-style professional blue */
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--ghost-white);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+            padding-top: 120px;
+        }
+
+        /* Ultra-Thin Glass Navbar */
+        .navbar {
+            background: rgba(252, 252, 252, 0.8) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            font-size: 1.4rem;
+            color: var(--ink) !important;
+        }
+
+        /* Sophisticated Hero */
+        .hero-section {
+            padding: 160px 0 100px;
+            background: radial-gradient(at 0% 0%, rgba(0, 122, 255, 0.03) 0, transparent 50%);
+        }
+
+        .hero-title {
+            font-weight: 850;
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive fluid typography */
+            letter-spacing: -0.05em;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Professional Action Button */
+        .btn-action {
+            background: var(--ink);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--ink);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-action:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        /* The "Bento" Container */
+        .main-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 20px 40px rgba(0,0,0,0.02);
+            margin-top: 0;
+        }
+
+        /* Typography Utilities */
+        .text-dim { color: var(--slate); font-weight: 400; }
+    </style>
+    {% block page_styles %}{% endblock %}
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">InJobNet</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'recommend' %}">Recommend</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'insights' %}">Insights</a>
-                    </li>
+<body class="{% block body_class %}{% endblock %}">
+    
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">InJobNet<span class="text-primary">.</span></a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item"><a class="nav-link fw-medium" href="{% url 'homepage' %}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="{% url 'results' %}">Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="{% url 'insights' %}">Market Insights</a></li>
                 </ul>
-                <!--<span class="navbar-text">
-                    Navbar text with an inline element
-                </span  >-->
             </div>
         </div>
     </nav>
-    <div class="container">
-        {% block content%}
-        {% endblock %}
-    </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-    -->
-    <footer class="bg-dark text-light text-center py-3 mt-5">
-        <div class="container">
-            <p class="mb-1">Automated Data Analytics Platform</p>
-            <small>Built with Django | © 2026</small>
+    <main class="container {% block main_class %}{% endblock %}">
+        <div class="main-card">
+            {% block content %}
+            {% endblock %}
         </div>
+    </main>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <div class="container text-center">
+            <p class="mb-1">Automated Data Analytics Platform</p>
+            <p class="small text-uppercase tracking-wider fw-bold text-dim mb-2">Technical Stack</p>
+            <p class="text-dim">Django • Python • Bootstrap 5 • Scikit-Learn</p>
+            <p class="mt-4 opacity-50">&copy; 2026 InJobNet Analytics Platform</p>
+        </div>
+        
     </footer>
+
+    
 </body>
 
 </html>

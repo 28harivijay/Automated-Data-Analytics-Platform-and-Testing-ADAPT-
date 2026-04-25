@@ -1,10 +1,35 @@
 {% extends 'base.html' %}
+{% block page_styles %}
+<style>
+    body {
+        background-color: var(--ghost-white);
+    }
+
+    main {
+        padding-top: 30px;
+    }
+
+    .main-card {
+        margin-top: -40px;
+    }
+
+    .home-doc-btn {
+        border-radius: 8px;
+    }
+</style>
+{% endblock %}
 {% block content %}
-<div class="d-flex justify-content-center align-items-center text-center" style="min-height: 80vh;">
-    <div>
-        <h1 class="display-4 fw-bold">Automated Data Analytics Platform</h1>
-        <p class="lead mt-3">Enter your skills and instantly find the best matching jobs from our dataset.</p>
-        <a href="{% url 'recommend' %}" class="btn btn-primary btn-lg mt-3">Get Job Recommendations</a>
-    </div>
-</div>
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">Algorithmic Job Matching<br>Driven by Data.</h1>
+            <p class="lead text-dim mx-auto mb-5" style="max-width: 650px;">
+                InJobNet leverages Python-based analytics to bridge the gap between candidate skillsets and real-world market demand.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <form action="{% url 'upload' %}" method="get" class="m-0">
+                    <button type="submit" class="btn-action">Upload Skills</button>
+                </form>
+            </div>
+        </div>
+    </header>
 {% endblock %}

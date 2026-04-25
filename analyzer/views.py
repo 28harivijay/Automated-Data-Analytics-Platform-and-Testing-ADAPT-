@@ -5,12 +5,15 @@ import pandas as pd
 def Home_Page(request):
     return render(request, 'home.html')
 
-def Recommend(request):
+def Upload(request):
+    return render(request, 'upload.html')
+
+def Results(request):
     if request.method == "POST":
         user_skills = request.POST.get('skills', '')
         jobs = recommend_jobs(user_skills)
-        return render(request, 'results.html', {'jobs': jobs , 'skills': user_skills})
-    return render(request, 'recommend.html')
+        return render(request, 'results.html', {'jobs': jobs, 'skills': user_skills})
+    return render(request, 'upload.html')
 
 def Insights(request):
     df = pd.read_csv('datasets/job_market.csv')

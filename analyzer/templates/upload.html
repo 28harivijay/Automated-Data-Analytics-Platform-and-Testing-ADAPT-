@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="container mt-5">
     <h2>Find Your Dream Job</h2>
     <p>Enter your skills below to get job recommendations</p>
     
-    <form method="POST">
+    <form method="POST" action="{% url 'results' %}">
         {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Your Skills</label>

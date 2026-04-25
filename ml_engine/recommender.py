@@ -16,7 +16,7 @@ def recommend_jobs(user_skills, top_n=5):
     df['match_score'] = df['skills'].apply(count_matches)
     
     # sort by best match
-    top_jobs = df.sort_values('match_score', ascending=False).head(top_n)
+    top_jobs = df.sort_values('match_score', ascending=False).head(10)
     
     top_jobs = top_jobs[['job_title','company','location','skills','salary_min','salary_max','match_score']].to_dict(orient='records')
 
