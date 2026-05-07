@@ -41,3 +41,6 @@ dist/
 .pytest_cache/
 coverage.xml
 htmlcov/
+
+# Training models
+models/

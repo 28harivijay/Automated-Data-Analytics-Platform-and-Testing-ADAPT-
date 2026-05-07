@@ -1,4 +1,6 @@
 import pandas as pd
+import joblib
+
 
 def recommend_jobs(user_skills, top_n=5):
     # load dataset
@@ -23,4 +25,20 @@ def recommend_jobs(user_skills, top_n=5):
     for job in top_jobs:
         job['skills'] = [s.strip() for s in job['skills'].split(',')]
 
-    return top_jobs
+    """Predict job titles based on user skills using the trained model."""
+
+    rfc = joblib.load('models/rfc.pkl')  # load the classifier model
+    mlb = joblib.load('models/mlb.pkl')  # load the MultiLabelBinarizer
+    le = joblib.load('models/le.pkl')    # load the LabelEncoder    
+    kmeans = joblib.load('models/kmeans.pkl')  # load the KMeans model
+    rfr = joblib.load('models/rfr.pkl')  # load the Random Forest Regressor
+
+    # encode
+    user_vector = mlb.transform([user_skill_list])
+
+    # predict
+    predicted_title = le.inverse_transform(rfc.predict(user_vector))[0]
+    predicted_salary = round(rfr.predict(user_vector)[0], 2)
+    predicted_cluster = int(kmeans.predict(user_vector)[0])
+
+    return top_jobs, predicted_title, predicted_salary, predicted_cluster

@@ -11,8 +11,8 @@ def Upload(request):
 def Results(request):
     if request.method == "POST":
         user_skills = request.POST.get('skills', '')
-        jobs = recommend_jobs(user_skills)
-        return render(request, 'results.html', {'jobs': jobs, 'skills': user_skills})
+        jobs, predicted_title, predicted_salary, predicted_cluster = recommend_jobs(user_skills)
+        return render(request, 'results.html', {'jobs': jobs, 'skills': user_skills, 'predicted_title': predicted_title, 'predicted_salary': predicted_salary, 'predicted_cluster': predicted_cluster})
     return render(request, 'upload.html')
 
 def Insights(request):

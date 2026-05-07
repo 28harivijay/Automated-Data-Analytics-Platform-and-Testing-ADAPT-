@@ -6,6 +6,24 @@
     <h2>Job Recommendations</h2>
     <p>Results for: <strong>{{ skills }}</strong></p>
 
+    <!-- ML Predictions Card -->
+    <div class="card mb-4 border-primary">
+        <div class="card-body">
+            <h5 class="card-title">🤖 ML Predictions for Your Skills</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>🎯 <strong>Best Fit Role</strong><br>{{ predicted_title }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>💰 <strong>Expected Salary</strong><br>${{ predicted_salary }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>🗂️ <strong>Skills Group</strong><br>Cluster {{ predicted_cluster }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         {% for job in jobs %}
         <div class="col-md-4 mb-3">
